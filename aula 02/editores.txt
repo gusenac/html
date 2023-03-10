@@ -1,0 +1,14 @@
+Editores de html
+
+Bloco de notas
+IDEs
+ visual studio
+ visual code
+ dreamweaver
+
+ editores HTML online
+ vi
+
+qualquer editor de texto podemos usar,
+html é um texto
+
