@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-<body style="background-color: rgb(230, 240, 215);"></body>
+<body style="background-color:rgb(255, 255, 255);"></body>
 <head>
 <style>
-h1 {color:black}
-label {color:red}
+h1 {color:white}
+h1 {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+label {color:rgb(17, 17, 17)}
+label {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
 </style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,38 +16,51 @@ Formulario
 </head>
 
 <script type="text/javascript">
-    function Converter(){
-     let  f = document.getElementById("tempF").value;
-     let tc = document.getElementById("tempC").value;
+
+   
+    function Converter() {
+
+       let f = document.getElementById("tempF").value;
+       let c = document.getElementById("tempC").value;
+       let k = document.getElementById("tempK").value;
+
+       if (f != "") {
+       
+       c =(f-32)/1.8;
+       document.getElementById("tempC").value = c;
+       k = (f-32)/1.8+273;
+       document.getElementById("tempK").value = k; 
+    }
+
+    else if (c != "") {
+      f =(c*9/5)+ 32;
+       document.getElementById("tempF").value = f;
+       k = c*1+273;
+       document.getElementById("tempK").value = k; 
+    }
+
+    
+    if(c==""&& f==""&& k=="")
+    {
+        alert("Por favor digite um número para fazer a converção de temperatura");
+        document.getElementById("tempK").style.borderColor = "red";
+        document.getElementById("tempF").style.borderColor = "red";
+        document.getElementById("tempC").style.borderColor = "red";
+    }
      
-     if(f=="")
-     {
-         document.getElementById("tempF").focus;
-         document.getElementById("tempF").style.borderColor = "red";
-     }
-     if(tc=="")
-     {
-         alert("Celsius não informado");
-     }
-     if(k=="")
-     {
-        alert("Kelvin não informado");
-     }
-     else{
-         document.getElementById("tempF").style.borderColor = "grey";
-         let c = (f-32)/1.8;
-         document.getElementById("tempC").value = c;
-     }
+    else if (k != "") {
+        f =(k-273.15) * 9/5 +32;
+        document.getElementById("tempF").value = f; 
+        c = k-273.15;
+        document.getElementById("tempC").value = c;}
 
-
-
-}
-
-function Limpar(){
-    document.getElementById("tempF").value="";
-    document.getElementById("tempC").value="";
-    document.getElementById("tempK").value="";
-}
+    }
+      
+    function Limpar(){
+        document.getElementById("tempF").value="";
+        document.getElementById("tempC").value="";
+        document.getElementById("tempK").value="";
+    }
 
 
 </script>
@@ -58,28 +73,29 @@ border-radius: 5%;
 </style>
 </head>
 <body>
-<h1> Calcule a temperatura </h1>
-<label for="tempF">Farenheit: </label><br> 
+<fieldset style="background-color: black;">
+<h1> Faça a conversão de temperatura que deseja </h1>
+</fieldset>
+<fieldset style="background-color:yellow">
+<label for="tempF">Temperatura em Farenheit: </label><br> 
  <input type="number" id="tempF" name="tempF" placeholder="Farenheit "  required><br><br>
  
 
-<label for="tempC">Celsius: </label><br>
-<input type="number" name="tempC" id="tempC" placeholder=" Celsius "  required><br><br>
+<label for="tempC">Temperatura em Celsius: </label><br>
+<input type="number" name="tempC" id="tempC" placeholder="Celsius "  required><br><br>
 
 
 
 
-<label for="tempK">Kelvin: </label><br>
- <input type="number" name="tempK" id="tempK" placeholder=" Kelvin "  required><br><br><br>
+<label for="tempK">Temperatura em Kelvin: </label><br>
+ <input type="number" name="tempK" id="tempK" placeholder="Kelvin "  required><br><br><br>
+</fieldset>
 
 
-
-
+<fieldset style="background-color: rgb(113, 182, 182);">
  <input type="button" id="btnConverter" onclick="Converter()"value="Converter">
 
-<input type="button" id="btnLimpar" onclick="Limpar()"value="Limpar">
-
-
-    
+<input type="button" id="btnLimpar" onclick="Limpar()"value="Limpar"> </fieldset>
+  
 </body>
 </html>
