@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+canvas 2d
+</title>
+
+</head>
+
+<body>
+    <h1> Exemplo de um canvas 2d</h1>
+    <canvas id="canvas" width="500"></canvas>
+</body>
+<script type="text/javascript">
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+//filRect( x inicio, y inicio, largura, altura do retangulo)
+    
+    ctx.fillStyle= rgba_aleatorio(); // chamamos as cores aleatorias
+    ctx.fillRect(10, 10, 200, 100);
+    // clearRect é um canvas dentro de outro 
+    ctx.clearRect(20,20, 180, 80);
+    // stokerect serve para desenhar a borda
+    ctx.strokeRect(10, 10, 200, 100);
+    ctx.strokeRect(20, 20, 180, 80);
+    // moveTo e  line serve para fazer uma linha
+    ctx.moveTo(20, 20);
+    ctx.lineTo(200, 100);
+    // stroke desenho
+    ctx.stroke();
+
+    ctx.moveTo(200, 20);
+    ctx.lineTo(20, 100);
+    ctx.stroke();
+
+
+    // criando circulo beginpath
+    ctx.beginPath();
+    // arc (x inicial, y inicial, raio, angulo inicial, angulo final)
+    // march.PI função matemática
+    ctx.arc(300, 100, 25, 0, 2*Math.PI);
+    // stroke desenho
+    ctx.stroke();
+    // chama função para chamar as cores aleatorias 
+    ctx.fillStyle= rgba_aleatorio();
+    ctx.fill();  
+
+
+    // ciando textos
+
+    ctx.font='54px serif';
+    // definindo cor propria para o texto
+    // serif - tipo da letra
+    ctx.fillStyle=rgba_aleatorio();
+    ctx.fillText('hello word', 230,40);
+
+    // criando borda no texto
+    ctx.strokeStyle = rgba_aleatorio();
+    ctx.strokeText('hello word',230,40);
+
+
+    // formas geometricas complexas 
+
+    ctx.beginPath();
+    ctx.moveTo(20, 100);
+    ctx.lineTo(40, 20);
+    ctx.lineTo(40, 20);
+    ctx.fillStyle =rgba_aleatorio();
+    ctx.fill();
+
+
+
+    // criando cores aleatórias
+
+    function rgba_aleatorio()   
+
+{
+
+var r = Math.round(Math.random()*255);
+var g = Math.round(Math.random()*255);
+var b = Math.round(Math.random()*255);
+// a alfa
+var a = Math.random().toFixed(2);
+
+return 'rgba('+ r +', '+ g +', '+b+', '+a+')';
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
